@@ -47,7 +47,7 @@ java -cp out Main
 - model: 2
 - x(0): 10
 - dt: 0.1
-- steps: 20
+- steps: 15
 - r: 0.5
 - K: 100
 
