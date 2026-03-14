@@ -1,53 +1,66 @@
-# 🧮 Java 程式設計(一) - 數學模型模擬器
+# Java 程式設計(一) 作業儲存庫
 
-[![Java](https://img.shields.io/badge/Java-ED8B00?style=flat-square&logo=java&logoColor=white)](https://www.java.com/)
-[![VS Code](https://img.shields.io/badge/VS_Code-0078D4?style=flat-square&logo=visual-studio-code&logoColor=white)](https://code.visualstudio.com/)
+## 課程資訊
+- 課程名稱：Java程式設計(一)
+- 作業內容：Assignment 1-1 ~ 1-4
+- 專案主題：使用 VS Code 與 AI 協作開發線性與非線性數學模型之數值模擬程式
 
-> **課程名稱**：Java程式設計(一)  
-> **作業內容**：Assignment 1-1 ~ 1-4  
-> **專案主題**：使用 VS Code 與 AI 協作開發線性與非線性數學模型之數值模擬程式  
-> **專案連結**：[java_Assignment-1-2026-3-3](https://github.com/Eason0101-a/java_Assignment-1-2026-3-3)
+## 摘要
+本研究以 Java 程式設計(一)課程作業為案例，探討結合 VS Code 與生成式 AI 之協作式程式開發流程。研究方法涵蓋專案環境建置、線性與非線性數學模型建模、Euler 法數值模擬程式實作，以及執行結果之系統化文件整理。研究結果顯示，透過 AI 協作可提升開發流程之完整性與文件產出效率，並有助於強化模型實作與程式驗證之學習成效。
 
----
+專案儲存庫網址：
+- https://github.com/Eason0101-a/java_Assignment-1-2026-3-3
 
-## ✨ 專案特色 (Features)
+## 關鍵字
+- Java
+- VS Code
+- AI 協作程式開發
+- 數學模型
+- Euler 方法
+- 非線性系統
 
-- 🤖 **AI 協作開發**：展示如何利用 AI 輔助架構設計、例外處理與文件撰寫。
-- 🛡️ **強健的防呆機制**：
-  - 內建 `try-catch` 捕捉 `InputMismatchException`，防止輸入非數值導致程式崩潰。
-  - 嚴格的邏輯驗證（阻擋 dt ≦ 0、迭代步數 steps < 0 以及容載力 K = 0 的無效參數）。
-- 📐 **模組化設計**：將導數計算 (`computeDerivative`) 與迭代邏輯 (`simulate`) 獨立拆分，保持主程式整潔。
+## 專案特色
+- AI 協作開發：用於程式草稿、架構整理與文件撰寫。
+- 例外處理與輸入驗證：可處理輸入格式錯誤，並檢查無效參數。
+- 模組化設計：將導數計算與模擬流程分離，提高可讀性與維護性。
 
----
+## 數學模型
+本程式使用 Euler 方法進行兩種常微分方程模型的數值迭代：
 
-## 🔬 數學模型 (Mathematical Models)
-
-本程式支援兩種常微分方程式 (ODE) 模型的 **Euler 方法 (Euler Method)** 數值迭代求解：
-
-### 1. 線性衰減模型 (Linear Model)
-描述放射性衰減或一階反應：
+1. 線性模型
 $$dx/dt = -k \cdot x$$
 
-### 2. 非線性 Logistic 成長模型 (Nonlinear Model)
-描述受環境容載力限制的族群成長：
+2. 非線性 Logistic 模型
 $$dx/dt = r \cdot x \cdot (1 - x/K)$$
 
----
-
-## 📂 專案結構 (Project Structure)
-
+## 專案結構
 ```text
-📦 java_Assignment-1-2026-3-3
- ┣ 📂 src
- ┃ ┗ 📜 Main.java      # 程式主邏輯與核心演算法
- ┣ 📂 out              # Java 編譯輸出的 .class 檔存放區
- ┗ 📜 README.md        # 專案說明文件
-🚀 快速開始 (Getting Started)編譯與執行請開啟終端機 (Terminal) 或 PowerShell，在專案根目錄下執行以下指令：PowerShell# 1. 編譯 Java 程式碼，並將結果輸出至 out 資料夾
-javac -d out src/Main.java
+.
+|-- README.md
+|-- src/
+|   `-- Main.java
+`-- out/               （編譯後產生）
+```
 
-# 2. 執行編譯後的 Main 類別
+## 編譯與執行
+請在專案根目錄開啟終端機，執行下列指令：
+
+```powershell
+javac -d out src/Main.java
 java -cp out Main
-💻 執行範例 (Usage Example)以下為選擇 「2. 非線性模型」 的實際終端機互動過程。測試參數設定：初始值 x(0) = 10時間步長 dt = 0.1迭代次數 steps = 15成長率 r = 0.5容載力 K = 100主控台輸出畫面：Plaintext=== 數學模型模擬器（簡化版）===
+```
+
+## 範例輸入
+- model: 2
+- x(0): 10
+- dt: 0.1
+- steps: 15
+- r: 0.5
+- K: 100
+
+## 執行結果節錄
+```text
+=== 數學模型模擬器（簡化版）===
 1. 線性模型：dx/dt = -k*x
 2. 非線性模型：dx/dt = r*x*(1 - x/K)
 請選擇模型（1 或 2）：2
@@ -67,4 +80,10 @@ step    time    x
 15      1.50    18.380255
 
 最終結果 x = 18.380255
-📊 測試結果說明：實驗結果顯示，隨著迭代次數增加，數值 $x$ 呈現穩定成長並逐漸朝向設定的容載力 $K$ 值收斂，完美符合 Logistic 模型的數學理論預期。
+```
+
+## Logistic 模型測試說明
+編譯並執行 Java 程式後，我們測試了非線性 Logistic 模型的表現。本次設定為 $x(0)=10$、$dt=0.1$、$r=0.5$ 與 $K=100$。終端機輸出結果與狀態變化如圖 \ref{fig:terminal} 所示。
+
+## AI 使用聲明
+本專案在程式草稿撰寫、結構調整與文件整理過程中使用 AI 作為協作工具。所有產生內容皆已由作者檢查與理解後再提交。
